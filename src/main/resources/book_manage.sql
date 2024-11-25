@@ -1,10 +1,10 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 3307
+ Source Server         : 3306
  Source Server Type    : MySQL
  Source Server Version : 80012
- Source Host           : localhost:3307
+ Source Host           : localhost:3306
  Source Schema         : book_manage
 
  Target Server Type    : MySQL

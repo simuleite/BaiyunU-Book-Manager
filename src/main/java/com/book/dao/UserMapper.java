@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Select;
 
 public interface UserMapper {
 
-    @Select("select * from admin where username = #{username} and password = #{password}")
+    @Select("select * from book_manage.admin where username = #{username} and password = #{password}")
     User getUser(@Param("username") String username, @Param("password") String password);
 }

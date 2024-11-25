@@ -11,16 +11,16 @@ import java.io.IOException;
 public class MybatisUtil {
 
     //在类加载时就进行创建
-    private static SqlSessionFactory sqlSessionFactory;
+    private static SqlSessionFactory factory;
     static {
         try {
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("mybatis-config.xml"));
+            factory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("mybatis-config.xml"));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
-    public static SqlSession getSession(){
-        return sqlSessionFactory.openSession(true);
+    public static SqlSession getSession() {
+        return factory.openSession(true);
     }
 }
