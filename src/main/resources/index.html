@@ -24,11 +24,11 @@
 </head>
 
 <body>
-	<div class="loader">
-	  <div class="spinner">
-		<img src="static/picture/loader.gif" alt="">
-	  </div> 
-	</div>
+<!--	<div class="loader">-->
+<!--	  <div class="spinner">-->
+<!--		<img src="static/picture/loader.gif" alt="">-->
+<!--	  </div> -->
+<!--	</div>-->
     <!-- Main Body -->
     <div class="page-wrapper">
 
@@ -257,7 +257,7 @@
                                                 <tr th:each="borrow : ${borrow_list}">
                                                     <td th:text="'#'+${borrow.getBook_id()}">#JH2033</td>
                                                     <td th:text="${borrow.getBook_name()}">我是书名</td>
-                                                    <td th:text="${borrow.getTime()}">22/06/2021</td>
+                                                    <td th:text="${borrow.getBorrowDate()}">22/06/2021</td>
                                                     <td th:text="${borrow.getStudent_name()}">我是学生</td>
                                                     <td th:text="'#'+${borrow.getStudent_id()}">#1111</td>
                                                     <td class="relative">

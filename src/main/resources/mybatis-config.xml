@@ -17,5 +17,6 @@
 
     <mappers>
         <package name="com.book.dao"/>
+<!--        <mapper class="com.book.dao.UserMapper"></mapper>-->
     </mappers>
 </configuration>
