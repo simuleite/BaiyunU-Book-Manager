@@ -1,5 +1,6 @@
 package com.book.dao;
 
+import com.book.entity.Book;
 import com.book.entity.Borrow;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Result;
@@ -24,4 +25,7 @@ public interface BookMapper {
 
     @Delete("delete from borrow where id = #{id}")
     void deleteBorrow(String id);
+
+    @Select("select * from book")
+    List<Book> getBookList();
 }
