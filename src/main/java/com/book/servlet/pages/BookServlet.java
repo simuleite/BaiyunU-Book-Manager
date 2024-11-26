@@ -1,7 +1,6 @@
 package com.book.servlet.pages;
 
 import com.book.entity.User;
-import com.book.service.impl.BookServletImpl;
 import com.book.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

@@ -11,6 +11,6 @@ public class Borrow {
     String book_name;
     int student_id;
     String student_name;
-    Date borrow_date;
-    Date return_date;
+    String borrow_date;
+    String return_date;
 }
