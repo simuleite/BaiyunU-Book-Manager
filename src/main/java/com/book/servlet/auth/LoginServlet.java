@@ -62,7 +62,6 @@ public class LoginServlet extends HttpServlet {
 
         if (userService.auth(username, password, req.getSession())) {
 //            resp.getWriter().write("Login Success!");
-            resp.sendRedirect("index");
             if(remember != null){   //若勾选了勾选框，那么会此表单信息
                 Cookie cookie_username = new Cookie("username", username);
                 int week = 60 * 60 * 24 * 7;
@@ -72,6 +71,7 @@ public class LoginServlet extends HttpServlet {
                 resp.addCookie(cookie_username);
                 resp.addCookie(cookie_password);
             }
+            resp.sendRedirect("index");
         } else {
             req.getSession().setAttribute("login-failure", new Object());
             this.doGet(req, resp);
