@@ -2,6 +2,7 @@ package com.book.servlet.auth;
 
 import com.book.service.Impl.UserServiceImpl;
 import com.book.service.UserService;
+import com.book.utils.MD5Util;
 import com.book.utils.MybatisUtil;
 import com.book.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
@@ -60,13 +61,16 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         String remember = req.getParameter("remember-me");
 
-        if (userService.auth(username, password, req.getSession())) {
-//            resp.getWriter().write("Login Success!");
-            if(remember != null){   //若勾选了勾选框，那么会此表单信息
+        // 使用MD5加密用户输入的密码
+        String encryptedPassword = MD5Util.toMD5(password);
+        System.out.println(encryptedPassword);
+
+        if (userService.auth(username, encryptedPassword, req.getSession())) {
+            if(remember != null){   //若勾选了记住我选项，则设置Cookie
                 Cookie cookie_username = new Cookie("username", username);
                 int week = 60 * 60 * 24 * 7;
                 cookie_username.setMaxAge(week);
-                Cookie cookie_password = new Cookie("password", password);
+                Cookie cookie_password = new Cookie("password", password); // 这里应该是加密后的密码
                 cookie_password.setMaxAge(week);
                 resp.addCookie(cookie_username);
                 resp.addCookie(cookie_password);
@@ -76,6 +80,5 @@ public class LoginServlet extends HttpServlet {
             req.getSession().setAttribute("login-failure", new Object());
             this.doGet(req, resp);
         }
-
     }
 }
