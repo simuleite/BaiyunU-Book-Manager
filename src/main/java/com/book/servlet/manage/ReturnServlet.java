@@ -13,10 +13,10 @@ import java.io.IOException;
 @WebServlet("/return-book")
 public class ReturnServlet extends HttpServlet {
 
-    BookService bookService;
+    private BookService bookService;
     @Override
     public void init() throws ServletException {
-        bookService = new BookServiceImpl();
+        bookService = BookServiceImpl.getInstance();
     }
 
     @Override

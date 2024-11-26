@@ -10,6 +10,19 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
+
+    private static StudentServiceImpl instance = null;
+
+    private StudentServiceImpl() {
+    }
+
+    public static synchronized StudentServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new StudentServiceImpl();
+        }
+        return instance;
+    }
+
     @Override
     public List<Student> getStudentList() {
         try (SqlSession sqlSession = MybatisUtil.getSession()) {

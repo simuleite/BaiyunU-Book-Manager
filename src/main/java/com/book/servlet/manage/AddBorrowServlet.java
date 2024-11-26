@@ -17,12 +17,12 @@ import java.io.IOException;
 @WebServlet("/add-borrow")
 public class AddBorrowServlet extends HttpServlet {
 
-    BookService bookService;
-    StudentService studentService;
+    private BookService bookService;
+    private StudentService studentService;
     @Override
     public void init() throws ServletException {
-        bookService = new BookServiceImpl();
-        studentService = new StudentServiceImpl();
+        bookService = BookServiceImpl.getInstance();
+        studentService = StudentServiceImpl.getInstance();
     }
 
     @Override

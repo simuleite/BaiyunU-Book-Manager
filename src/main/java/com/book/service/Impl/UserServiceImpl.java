@@ -9,6 +9,18 @@ import org.apache.ibatis.session.SqlSession;
 
 public class UserServiceImpl implements UserService {
 
+    private static UserServiceImpl instance = null;
+
+    private UserServiceImpl() {
+    }
+
+    public static synchronized UserServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new UserServiceImpl();
+        }
+        return instance;
+    }
+
     @Override
     public boolean auth(String username, String password, HttpSession session) {
         try (SqlSession sqlSession = MybatisUtil.getSession()) {

@@ -19,10 +19,11 @@ import java.util.ArrayList;
 @WebServlet("/books")
 public class BookServlet extends HttpServlet {
 
-    BookService bookService;
+    private BookService bookService;
+
     @Override
     public void init() throws ServletException {
-        bookService = new BookServiceImpl();
+        bookService = BookServiceImpl.getInstance(); // 使用单例
     }
 
     @Override

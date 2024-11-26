@@ -13,10 +13,10 @@ import java.io.IOException;
 @WebServlet("/delete-book")
 public class DeleteBookServlet extends HttpServlet {
 
-    BookService bookService;
+    private BookService bookService;
     @Override
     public void init() throws ServletException {
-        bookService = new BookServiceImpl();
+        bookService = BookServiceImpl.getInstance();
     }
 
     @Override

@@ -13,6 +13,21 @@ import java.util.stream.Collectors;
 
 public class BookServiceImpl implements BookService {
 
+    // 静态变量，保存单例实例
+    private static BookServiceImpl instance = null;
+
+    // 私有构造函数，防止外部直接实例化
+    private BookServiceImpl() {
+    }
+
+    // 公共的静态方法，返回单例实例
+    public static synchronized BookServiceImpl getInstance() {
+        if (instance == null) {
+            instance = new BookServiceImpl();
+        }
+        return instance;
+    }
+
     @Override
     public List<Borrow> getBorrowList() {
         try (SqlSession sqlSession = MybatisUtil.getSession()) {

@@ -21,7 +21,7 @@ public class StudentServlet extends HttpServlet {
     StudentService studentService;
     @Override
     public void init() throws ServletException {
-        studentService = new StudentServiceImpl();
+        studentService = StudentServiceImpl.getInstance();
     }
 
     @Override

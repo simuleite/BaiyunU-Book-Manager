@@ -22,8 +22,8 @@ public class IndexServlet extends HttpServlet {
     StudentService studentService;
     @Override
     public void init() throws ServletException {
-        bookService = new BookServiceImpl();
-        studentService = new StudentServiceImpl();
+        bookService = BookServiceImpl.getInstance();
+        studentService = StudentServiceImpl.getInstance();
     }
 
     @Override
