@@ -27,7 +27,7 @@
 	<div class="loader">
 	  <div class="spinner">
 		<img src="static/picture/loader.gif" alt="">
-	  </div> 
+	  </div>
 	</div>
     <!-- Main Body -->
     <div class="page-wrapper">
@@ -134,7 +134,7 @@
                                                     <td th:text="${book.getDesc()}">$600</td>
                                                     <td th:text="'￥'+${book.getPrice()}">$600</td>
                                                     <td>
-                                                        <label class="mb-0 badge badge-primary" title="" data-original-title="Pending" th:if="${book_list_status.get(iterStat.index)}">正在借阅</label>
+                                                        <label class="mb-0 badge badge-primary" title="" data-original-title="Pending" th:if="${book_list_status.get(iterStat.index)}">已被借阅</label>
                                                         <label class="mb-0 badge badge-success" title="" data-original-title="Pending" th:unless="${book_list_status.get(iterStat.index)}">可借阅</label>
                                                     </td>
                                                     <td class="relative">

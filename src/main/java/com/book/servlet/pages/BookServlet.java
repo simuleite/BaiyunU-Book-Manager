@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.thymeleaf.context.Context;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/books")
 public class BookServlet extends HttpServlet {
@@ -29,6 +30,8 @@ public class BookServlet extends HttpServlet {
         Context context = new Context();
         User user = (User) req.getSession().getAttribute("user");
         context.setVariable("nickname", user.getNickname());
+        context.setVariable("book_list", bookService.getBookList().keySet());
+        context.setVariable("book_list_status", new ArrayList<>(bookService.getBookList().values()));
         ThymeleafUtil.process("books.html", context, resp.getWriter());
     }
 }

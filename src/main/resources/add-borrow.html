@@ -113,12 +113,14 @@
                                                         <label for="region" class="col-form-label">书籍</label>
                                                         <select class="select2 form-control" id="region" name="book">
                                                             <option th:value="${book.getBid()}" th:each="book : ${book_list}" th:text="${book.getTitle()}"></option>
+                                                            <!-- 如果book_list为空，则显示占位文本 -->
+                                                            <option th:unless="${not #lists.isEmpty(book_list)}" disabled="disabled">没有书籍可供选择</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
-                                                        <label for="city" class="col-form-label">学生</label>
+                                                        <label for="city" class="col-form-label">借阅人</label>
                                                         <select class="select2 form-control" id="city" name="student">
                                                             <option th:value="${student.getSid()}" th:each="student : ${student_list}" th:text="${student.getName()}"></option>
                                                         </select>

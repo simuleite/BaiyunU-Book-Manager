@@ -2,10 +2,7 @@ package com.book.dao;
 
 import com.book.entity.Book;
 import com.book.entity.Borrow;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -28,4 +25,13 @@ public interface BookMapper {
 
     @Select("select * from book")
     List<Book> getBookList();
+
+    @Insert("insert into borrow(sid, bid, borrow_time, return_time) values (#{sid}, #{bid}, NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH))")
+    void addBorrow(@Param("sid") int sid, @Param("bid") int bid);
+
+    @Delete("delete from book where bid = #{bid}")
+    void deleteBook(int bid);
+
+    @Insert("insert into book(title, `desc`, price) values (#{title}, #{desc}, #{price})")
+    void addBook(@Param("title") String title, @Param("desc") String desc, @Param("price") double price);
 }

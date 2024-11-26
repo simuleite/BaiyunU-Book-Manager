@@ -11,6 +11,7 @@ public class ThymeleafUtil {
     static  {
         engine = new TemplateEngine();
         ClassLoaderTemplateResolver r = new ClassLoaderTemplateResolver();
+        r.setCharacterEncoding("UTF-8");
         engine.setTemplateResolver(r);
     }
 

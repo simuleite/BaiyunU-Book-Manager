@@ -193,7 +193,8 @@ iframe {
 }
 
 .ad-auth-img {
-    padding: 0 35px;
+    max-height: 382;
+    padding: 35 35px;
 }
 
 .ad-auth-logo {
