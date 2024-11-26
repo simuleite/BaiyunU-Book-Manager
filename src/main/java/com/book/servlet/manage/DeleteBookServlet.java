@@ -1,19 +1,16 @@
-package com.book.servlet.pages;
+package com.book.servlet.manage;
 
-import com.book.entity.User;
 import com.book.service.impl.BookServiceImpl;
-import com.book.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.thymeleaf.context.Context;
 
 import java.io.IOException;
 
-@WebServlet("/students")
-public class StudentServlet extends HttpServlet {
+@WebServlet("/delete-book")
+public class DeleteBookServlet extends HttpServlet {
 
     BookServiceImpl servlet;
     @Override
@@ -23,11 +20,8 @@ public class StudentServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        Context context = new Context();
-        User user = (User) req.getSession().getAttribute("user");
-        context.setVariable("nickname", user.getNickname());
-        context.setVariable("student_list", servlet.getStudentList());
-        ThymeleafUtil.process("students.html", context, resp.getWriter());
+        int bid = Integer.parseInt(req.getParameter("bid"));
+        servlet.deleteBook(bid);
+        resp.sendRedirect("books");
     }
 }

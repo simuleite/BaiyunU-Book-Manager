@@ -10,9 +10,7 @@ import com.book.service.BookService;
 import com.book.utils.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class BookServiceImpl implements BookService {
@@ -61,6 +59,36 @@ public class BookServiceImpl implements BookService {
         }
 
 
+    }
+
+    @Override
+    public Map<Book, Boolean> getBookList() {
+        try(SqlSession sqlSession = MybatisUtil.getSession();) {
+            Set<Integer> set = new HashSet<>();
+            this.getBorrowList().forEach(borrow -> set.add(borrow.getBook_id()));
+            Map<Book, Boolean> map = new LinkedHashMap<>();
+            BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+            mapper.getBookList().forEach(book -> {
+                map.put(book, set.contains(book.getBid()));
+            });
+            return map;
+        }
+    }
+
+    @Override
+    public void deleteBook(int bid) {
+        try(SqlSession sqlSession = MybatisUtil.getSession();) {
+            BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+            mapper.deleteBook(bid);
+        }
+    }
+
+    @Override
+    public void addBook(String title, String desc, double price) {
+        try(SqlSession sqlSession = MybatisUtil.getSession();) {
+            BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+            mapper.addBook(title, desc, price);
+        }
     }
 
 

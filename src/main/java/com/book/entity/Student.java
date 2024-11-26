@@ -6,6 +6,6 @@ import lombok.Data;
 public class Student {
     int sid;
     String name;
-    String gender;
+    String grade;
     String sex;
 }
