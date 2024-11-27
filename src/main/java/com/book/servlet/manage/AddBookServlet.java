@@ -23,7 +23,7 @@ import java.util.List;
 
 @WebServlet("/add-book")
 public class AddBookServlet extends HttpServlet {
-    
+
     final String RUNTIME_PATH = "../webapps/book/static/picture/books/";
     final String DB_PATH = "static/picture/books/";
 
