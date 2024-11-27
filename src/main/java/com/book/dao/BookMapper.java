@@ -35,4 +35,7 @@ public interface BookMapper {
 
     @Insert("insert into book(title, `desc`, price, image_path) values (#{title}, #{desc}, #{price}, #{imagePath})")
     void addBook(@Param("title") String title, @Param("desc") String desc, @Param("price") double price, @Param("imagePath") String imagePath);
+
+    @Update("update borrow set return_time = DATE_ADD(return_time, INTERVAL 1 MONTH) where id = #{id}")
+    void renewBook(@Param("id") String id);
 }

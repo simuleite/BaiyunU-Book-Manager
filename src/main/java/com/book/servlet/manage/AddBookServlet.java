@@ -23,14 +23,15 @@ import java.util.List;
 
 @WebServlet("/add-book")
 public class AddBookServlet extends HttpServlet {
-
+    
     final String RUNTIME_PATH = "../webapps/book/static/picture/books/";
     final String DB_PATH = "static/picture/books/";
-    BookService bookService;
+
+    private BookService bookService;
 
     @Override
     public void init() throws ServletException {
-        bookService = new BookServiceImpl();
+        bookService = BookServiceImpl.getInstance(); // 使用单例
     }
 
     @Override

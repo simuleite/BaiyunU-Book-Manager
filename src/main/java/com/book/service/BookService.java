@@ -22,4 +22,6 @@ public interface BookService {
 
     void addBook(String title, String desc, double price, String imagePath);
 
+    void renewBook(String id);
+
 }
