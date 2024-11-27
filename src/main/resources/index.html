@@ -252,6 +252,7 @@
                                                     <th>借阅人</th>
                                                     <th>借阅人学号</th>
 													<th>归还</th>
+                                                    <th>续借</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -276,6 +277,10 @@
                                                                 </g>
                                                             </svg>
                                                         </a>
+                                                    </td>
+                                                    <td>
+                                                        <label class="mb-0 badge badge-primary" title="" data-original-title="Pending" th:if="${book_list_status.get(iterStat.index)}">已被借阅</label>
+                                                        <label class="mb-0 badge badge-success" title="" data-original-title="Pending" th:unless="${book_list_status.get(iterStat.index)}">可借阅</label>
                                                     </td>
                                                 </tr>
                                             </tbody>
