@@ -17,7 +17,7 @@ public class MainFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         String url = req.getRequestURL().toString();
-        if (!url.contains("/static") && !url.endsWith("login")) {
+        if (!url.contains("/static") && (!url.endsWith("login") && !url.endsWith("register"))) {
             HttpSession session = req.getSession();
             User user = (User) session.getAttribute("user");
             if (user == null) {
