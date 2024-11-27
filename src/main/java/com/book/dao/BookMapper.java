@@ -23,6 +23,7 @@ public interface BookMapper {
     @Delete("delete from borrow where id = #{id}")
     void deleteBorrow(String id);
 
+    @Result(column = "image_path", property = "imagePath")
     @Select("select * from book")
     List<Book> getBookList();
 

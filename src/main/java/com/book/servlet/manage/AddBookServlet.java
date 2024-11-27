@@ -30,8 +30,10 @@ public class AddBookServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String title = req.getParameter("title");
+        String author = req.getParameter("author");
         String desc = req.getParameter("desc");
         double price = Double.parseDouble(req.getParameter("price"));
+        String imagePath = req.getParameter("imagePath");
         bookService.addBook(title, desc, price);
         resp.sendRedirect("books");
     }

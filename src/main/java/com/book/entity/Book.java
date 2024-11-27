@@ -6,6 +6,8 @@ import lombok.Data;
 public class Book {
     int bid;
     String title;
+    String author;
     String desc;
+    String imagePath;
     double price;
 }
