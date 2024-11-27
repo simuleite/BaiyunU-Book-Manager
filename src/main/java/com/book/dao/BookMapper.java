@@ -33,6 +33,6 @@ public interface BookMapper {
     @Delete("delete from book where bid = #{bid}")
     void deleteBook(int bid);
 
-    @Insert("insert into book(title, `desc`, price) values (#{title}, #{desc}, #{price})")
-    void addBook(@Param("title") String title, @Param("desc") String desc, @Param("price") double price);
+    @Insert("insert into book(title, `desc`, price, image_path) values (#{title}, #{desc}, #{price}, #{imagePath})")
+    void addBook(@Param("title") String title, @Param("desc") String desc, @Param("price") double price, @Param("imagePath") String imagePath);
 }

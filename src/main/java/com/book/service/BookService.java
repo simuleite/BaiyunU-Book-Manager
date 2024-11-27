@@ -20,6 +20,6 @@ public interface BookService {
 
     void deleteBook(int bid);
 
-    void addBook(String title, String desc, double price);
+    void addBook(String title, String desc, double price, String imagePath);
 
 }
