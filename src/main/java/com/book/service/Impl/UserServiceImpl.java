@@ -31,4 +31,31 @@ public class UserServiceImpl implements UserService {
             return true;
         }
     }
+
+    @Override
+    public boolean AlreadyUsername(String username, HttpSession session) {
+        try (SqlSession sqlSession = MybatisUtil.getSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            User user = mapper.getUserByName(username);
+            if (user == null) return false;
+            return true;
+        }
+    }
+
+    public User getUserBy(String username, HttpSession session){
+        try (SqlSession sqlSession = MybatisUtil.getSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            return mapper.getUserByName(username);
+        }
+    }
+
+    @Override
+    public void InsertUser(String username, String password, HttpSession session) {
+        try (SqlSession sqlSession = MybatisUtil.getSession()) {
+            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+            mapper.InsertUser(username, password);
+            User user = getUserBy(username, session);
+            session.setAttribute("user", user);
+        }
+    }
 }

@@ -3,6 +3,7 @@ package com.book.servlet.auth;
 import com.book.entity.User;
 import com.book.service.Impl.UserServiceImpl;
 import com.book.service.UserService;
+import com.book.utils.MD5Util;
 import com.book.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,16 +23,32 @@ public class RegisterServlet extends HttpServlet {
         userService = UserServiceImpl.getInstance();
     }
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Context context = new Context();
+        if (req.getSession().getAttribute("register-failure") != null) {
+            context.setVariable("failure", true);
+            req.getSession().removeAttribute("register-failure");
+        }
+
         ThymeleafUtil.process("register.html", context, resp.getWriter());
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String confirm_password = req.getParameter("confirm_password");
+        String encryptedPassword = MD5Util.toMD5(password);
+        if(password.equals(confirm_password) && !userService.AlreadyUsername(username, req.getSession())){
 
+            userService.InsertUser(username, encryptedPassword, req.getSession());
 
-
+            resp.sendRedirect("index");
+        }else {
+            req.getSession().setAttribute("register-failure", new Object());
+            this.doGet(req, resp);
+        }
     }
 }

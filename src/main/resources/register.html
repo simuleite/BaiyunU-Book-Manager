@@ -30,24 +30,24 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                         <div class="ad-auth-content">
-                            <form>
+                            <form method="post" action="register">
                                 <a
                                     href="https://v.bootstrapmb.com/2021/7/8sgd610581/index.html"
                                     class="ad-auth-logo"
                                     ><img src="static/picture/logo2.png" alt=""
                                 /></a>
                                 <h2>
-                                    <span class="primary">Hello,</span>Welcome!
+                                    <span class="primary">欢迎注册，云雅图书馆</span>
                                 </h2>
-                                <p>
-                                    Please Enter Your Details Below to Continue
-                                </p>
-                                <div class="ad-auth-form">
+                                <p th:unless="${failure}">请输入用户名和密码进行注册</p>
+                                <p th:if="${failure}" style="color: red">您的两次密码输入不一致或者用户已存在</p>
+                                <div class="ad-auth-form" >
                                     <div class="ad-auth-feilds mb-30">
                                         <input
                                             type="text"
-                                            placeholder="Enter Name"
+                                            placeholder="输入用户名"
                                             class="ad-input"
+                                            name="username"
                                         />
                                         <div class="ad-auth-icon">
                                             <svg
@@ -66,9 +66,10 @@
                                     </div>
                                     <div class="ad-auth-feilds mb-30">
                                         <input
-                                            type="text"
-                                            placeholder="Email Address"
+                                            type="password"
+                                            placeholder="输入密码"
                                             class="ad-input"
+                                            name="password"
                                         />
                                         <div class="ad-auth-icon">
                                             <svg
@@ -95,8 +96,9 @@
                                     <div class="ad-auth-feilds">
                                         <input
                                             type="password"
-                                            placeholder="Password"
+                                            placeholder="确认密码"
                                             class="ad-input"
+                                            name="confirm_password"
                                         />
                                         <div class="ad-auth-icon">
                                             <svg
@@ -122,17 +124,17 @@
                                     </div>
                                 </div>
                                 <div class="ad-auth-btn">
-                                    <a
+                                    <button
                                         href="javascript:void(0);"
                                         class="ad-btn ad-login-member"
-                                        >Sign up</a
+                                        >注册</button
                                     >
                                 </div>
                                 <p class="ad-register-text">
-                                    Already have an account ?
+                                    已经有账号了?
                                     <a
-                                        href="https://v.bootstrapmb.com/2021/7/8sgd610581/login.html"
-                                        >Login</a
+                                        href="login"
+                                        >登录</a
                                     >
                                 </p>
                             </form>
