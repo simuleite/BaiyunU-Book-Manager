@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
                 Cookie cookie_username = new Cookie("username", username);
                 int week = 60 * 60 * 24 * 7;
                 cookie_username.setMaxAge(week);
-                Cookie cookie_password = new Cookie("password", password); // 这里应该是加密后的密码
+                Cookie cookie_password = new Cookie("password", encryptedPassword); // 这里应该是加密后的密码
                 cookie_password.setMaxAge(week);
                 resp.addCookie(cookie_username);
                 resp.addCookie(cookie_password);
