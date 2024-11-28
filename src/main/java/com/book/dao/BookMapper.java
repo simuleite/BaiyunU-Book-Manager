@@ -27,6 +27,9 @@ public interface BookMapper {
     @Select("select * from book")
     List<Book> getBookList();
 
+    @Select("select * from borrow")
+    List<Book> getRnewBookList();
+
     @Insert("insert into borrow(sid, bid, borrow_time, return_time) values (#{sid}, #{bid}, NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH))")
     void addBorrow(@Param("sid") int sid, @Param("bid") int bid);
 
@@ -36,6 +39,10 @@ public interface BookMapper {
     @Insert("insert into book(title, `desc`, price, image_path) values (#{title}, #{desc}, #{price}, #{imagePath})")
     void addBook(@Param("title") String title, @Param("desc") String desc, @Param("price") double price, @Param("imagePath") String imagePath);
 
-    @Update("update borrow set return_time = DATE_ADD(return_time, INTERVAL 1 MONTH) where id = #{id}")
-    void renewBook(@Param("id") String id);
+    @Update("update borrow set return_time = DATE_ADD(return_time, INTERVAL 1 MONTH), renew_status = 1 where bid = #{bid}")
+    void renewBook(@Param("bid") String bid);
+
+    @Select("select renew_status from borrow where bid = #{bid}")
+    int getBookStatus(@Param("bid") String bid);
+
 }

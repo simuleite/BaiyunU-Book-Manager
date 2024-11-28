@@ -1,7 +1,6 @@
 package com.book.service.Impl;
 
 import com.book.dao.BookMapper;
-import com.book.dao.UserMapper;
 import com.book.entity.Book;
 import com.book.entity.Borrow;
 import com.book.service.BookService;
@@ -79,6 +78,7 @@ public class BookServiceImpl implements BookService {
         }
     }
 
+
     @Override
     public void deleteBook(int bid) {
         try (SqlSession sqlSession = MybatisUtil.getSession()) {
@@ -96,10 +96,18 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void renewBook(String id) {
+    public boolean renewBook(String bid) {
         try (SqlSession sqlSession = MybatisUtil.getSession()) {
             BookMapper mapper = sqlSession.getMapper(BookMapper.class);
-            mapper.renewBook(id);
+            int bookStatus = mapper.getBookStatus(bid);
+            if(bookStatus == 0){
+                mapper.renewBook(bid);
+                return true;
+            }else{
+                System.out.println("该书已被借出，不能续借！");
+                return false;
+            }
         }
     }
+
 }

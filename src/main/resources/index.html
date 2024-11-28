@@ -279,8 +279,8 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <label class="mb-0 badge badge-primary" title="" data-original-title="Pending" th:if="${book_list_status.get(iterStat.index)}">已被借阅</label>
-                                                        <label class="mb-0 badge badge-success" title="" data-original-title="Pending" th:unless="${book_list_status.get(iterStat.index)}">可借阅</label>
+                                                        <label class="mb-0 badge badge-success" title="" data-original-title="Pending" th:if="${borrow.renewStatus}"><a type="button" th:href="'renew-book?bid='+${borrow.book_id}">续借达到上限</a></label>
+                                                        <label class="mb-0 badge badge-success" title="" data-original-title="Pending" th:unless="${borrow.renewStatus}"><a type="button" th:href="'renew-book?bid='+${borrow.book_id}">续借</a></label>
                                                     </td>
                                                 </tr>
                                             </tbody>
