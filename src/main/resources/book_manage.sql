@@ -11,7 +11,7 @@
  Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 27/11/2024 18:53:38
+ Date: 29/11/2024 09:25:54
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `admin`  (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES (1, 'admin', '图书管理员', 'Abc123.');
+INSERT INTO `admin` VALUES (2, 'admin', '图书管理员', 'ae4d074d62c9697720e8366b597e1c63');
 
 -- ----------------------------
 -- Table structure for book
@@ -46,38 +46,13 @@ CREATE TABLE `book`  (
   `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `image_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`bid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES (1, 'Logic', 'an intro to logic', 35.20, NULL, NULL);
-INSERT INTO `book` VALUES (3, 'The Book', 'nothing', 3.99, NULL, NULL);
-INSERT INTO `book` VALUES (4, 'Luck', 'To gain Luck', 49.90, NULL, NULL);
-INSERT INTO `book` VALUES (5, '活着', '余华著', 35.00, '余华', 'static/picture/books/ToLive.jpg');
-INSERT INTO `book` VALUES (6, '你好', '不太好', 5.00, NULL, NULL);
-INSERT INTO `book` VALUES (7, 'a', NULL, 0.00, NULL, NULL);
-INSERT INTO `book` VALUES (8, 'a', NULL, 0.00, NULL, NULL);
-INSERT INTO `book` VALUES (9, 'a', NULL, 0.00, NULL, NULL);
-INSERT INTO `book` VALUES (10, 'a', NULL, 0.00, NULL, NULL);
-INSERT INTO `book` VALUES (11, '苍穹f', NULL, 0.00, NULL, NULL);
-INSERT INTO `book` VALUES (12, 'test', NULL, 0.00, NULL, NULL);
-INSERT INTO `book` VALUES (13, NULL, NULL, 0.00, NULL, NULL);
-INSERT INTO `book` VALUES (14, '活着f', '', 1.00, NULL, NULL);
-INSERT INTO `book` VALUES (15, '1', '2', 35.00, NULL, NULL);
-INSERT INTO `book` VALUES (16, '1', '111', 1111.00, NULL, NULL);
-INSERT INTO `book` VALUES (17, '1', '2', 123.00, NULL, NULL);
-INSERT INTO `book` VALUES (18, '1', '3', 35.00, NULL, NULL);
-INSERT INTO `book` VALUES (19, '罪与罚', '好书', 59.90, NULL, '/static/picture/books/ToLive51871.jpg');
-INSERT INTO `book` VALUES (20, '发育最', '', 1.00, NULL, 'static/picture/books/ToLive82563.jpg');
-INSERT INTO `book` VALUES (21, '1', 'm', 1.00, NULL, '../webapps/book/static/picture/books/ToLive56783.jpg');
-INSERT INTO `book` VALUES (22, '1', '', 1.00, NULL, '../webapps/book/static/picture/books/ToLive75565.jpg');
-INSERT INTO `book` VALUES (23, '罪与罚', '', 1.00, NULL, 'static/picture/books/SinAndPanish94467.jpg');
-INSERT INTO `book` VALUES (24, 'zyf', 'mmm', 1.00, NULL, 'static/picture/books/SinAndPanish28067.jpg');
-INSERT INTO `book` VALUES (25, 'threebody', 'good', 12.00, NULL, 'static/picture/books/ThreeBody44906.jpg');
-INSERT INTO `book` VALUES (26, 'tb1f', '1', 59.00, NULL, 'static/picture/books/ThreeBody130899.jpg');
-INSERT INTO `book` VALUES (27, 'History', '2', 23.00, NULL, 'static/picture/books/History55386.jpg');
-INSERT INTO `book` VALUES (28, 'newbook', 'new', 1.00, NULL, 'static/picture/books/Experiences36198.jpg');
+INSERT INTO `book` VALUES (33, '活着', '2018版', 35.50, NULL, 'static/picture/books/ToLive21609.jpg');
+INSERT INTO `book` VALUES (34, '史记', '中华书局注校', 119.80, NULL, 'static/picture/books/History79237.jpg');
 
 -- ----------------------------
 -- Table structure for borrow
@@ -100,8 +75,6 @@ CREATE TABLE `borrow`  (
 -- ----------------------------
 -- Records of borrow
 -- ----------------------------
-INSERT INTO `borrow` VALUES (3, 1, 1, '2024-11-26', '2024-12-26', NULL);
-INSERT INTO `borrow` VALUES (5, 1, 3, '2024-11-26', '2024-12-26', NULL);
 
 -- ----------------------------
 -- Table structure for student
@@ -113,21 +86,21 @@ CREATE TABLE `student`  (
   `sex` enum('男','女') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `grade` int(11) NOT NULL,
   PRIMARY KEY (`sid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 90 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES (1, 'Ming', '男', 2019);
-INSERT INTO `student` VALUES (2, 'Ming', '男', 2019);
-INSERT INTO `student` VALUES (3, 'Ming', '男', 2019);
-INSERT INTO `student` VALUES (4, 'Ming', '男', 2019);
-INSERT INTO `student` VALUES (5, 'Luo', '男', 2019);
-INSERT INTO `student` VALUES (6, 'Hero', '女', 2020);
-INSERT INTO `student` VALUES (7, 'Hero', '男', 2021);
-INSERT INTO `student` VALUES (8, 'Nio', '女', 1024);
-INSERT INTO `student` VALUES (9, 'no', '女', 2023);
-INSERT INTO `student` VALUES (10, '罗', '女', 2024);
+INSERT INTO `student` VALUES (10, '李柔', '女', 2024);
+INSERT INTO `student` VALUES (11, '秦明', '男', 2023);
+INSERT INTO `student` VALUES (13, '胡歌', '男', 2019);
+INSERT INTO `student` VALUES (21, '柳湘莲', '男', 2019);
+INSERT INTO `student` VALUES (24, '张陶', '男', 2021);
+INSERT INTO `student` VALUES (33, '古龙', '男', 2019);
+INSERT INTO `student` VALUES (36, '晴雯', '女', 2020);
+INSERT INTO `student` VALUES (38, '刘文文', '女', 2023);
+INSERT INTO `student` VALUES (42, '罗紫', '男', 2019);
+INSERT INTO `student` VALUES (90, '汪明珠', '女', 2024);
 
 -- ----------------------------
 -- Triggers structure for table book

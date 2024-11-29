@@ -24,4 +24,5 @@ public interface BookService {
 
     void renewBook(String id);
 
+    Map<Book, Boolean> getBookByTitle(String title);
 }

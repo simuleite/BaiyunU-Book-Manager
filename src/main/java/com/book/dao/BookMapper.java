@@ -38,4 +38,10 @@ public interface BookMapper {
 
     @Update("update borrow set return_time = DATE_ADD(return_time, INTERVAL 1 MONTH) where id = #{id}")
     void renewBook(@Param("id") String id);
+
+    @Select("select * from book where title like concat('%', #{title}, '%')")
+    Book getBookByTitle(String title);
+
+    @Select("select * from borrow where bid = #{bid}")
+    Borrow getBorrowByBid(int bid);
 }

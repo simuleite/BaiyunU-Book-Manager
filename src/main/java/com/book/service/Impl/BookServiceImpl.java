@@ -102,4 +102,15 @@ public class BookServiceImpl implements BookService {
             mapper.renewBook(id);
         }
     }
+
+    @Override
+    public Map<Book, Boolean> getBookByTitle(String title) {
+        try (SqlSession sqlSession = MybatisUtil.getSession()) {
+            BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+            Book book = mapper.getBookByTitle(title);
+            Map<Book, Boolean> res = new HashMap<>();
+            if (book != null) res.put(book, mapper.getBorrowByBid(book.getBid()) == null ? false : true);
+            return res;
+        }
+    }
 }

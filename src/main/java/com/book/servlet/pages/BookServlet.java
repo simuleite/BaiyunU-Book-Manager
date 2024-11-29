@@ -1,5 +1,6 @@
 package com.book.servlet.pages;
 
+import com.book.entity.Book;
 import com.book.entity.User;
 import com.book.service.BookService;
 import com.book.service.Impl.BookServiceImpl;
@@ -15,6 +16,8 @@ import org.thymeleaf.context.Context;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/books")
 public class BookServlet extends HttpServlet {
@@ -31,8 +34,17 @@ public class BookServlet extends HttpServlet {
         Context context = new Context();
         User user = (User) req.getSession().getAttribute("user");
         context.setVariable("nickname", user.getNickname());
-        context.setVariable("book_list", bookService.getBookList().keySet());
-        context.setVariable("book_list_status", new ArrayList<>(bookService.getBookList().values()));
+        String search = req.getParameter("search");
+        Map<Book, Boolean> map;
+        if (search != null && !search.equals("")) {
+            map = bookService.getBookByTitle(search);
+            context.setVariable("book_list", map.keySet());
+            context.setVariable("book_list_status", new ArrayList<>(map.values()));
+        } else {
+            map = bookService.getBookList();
+            context.setVariable("book_list", map.keySet());
+            context.setVariable("book_list_status", new ArrayList<>(map.values()));
+        }
         ThymeleafUtil.process("books.html", context, resp.getWriter());
     }
 }
