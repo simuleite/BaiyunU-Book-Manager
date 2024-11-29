@@ -18,11 +18,13 @@ public interface BookService {
 
     Map<Book, Boolean> getBookList();
 
+
     void deleteBook(int bid);
 
     void addBook(String title, String desc, double price, String imagePath);
 
-    void renewBook(String id);
+    boolean renewBook(String bid);
+
 
     Map<Book, Boolean> getBookByTitle(String title);
 }

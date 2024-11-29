@@ -257,12 +257,12 @@
                                             </thead>
                                             <tbody>
                                                 <tr th:each="borrow : ${borrow_list}">
-                                                    <td th:text="'#'+${borrow.getBook_id()}">#JH2033</td>
+                                                    <td th:text="${borrow.getBook_id()}">#JH2033</td>
                                                     <td th:text="${borrow.getBook_name()}">我是书名</td>
                                                     <td th:text="${borrow.getBorrowDate()}">22/06/2021</td>
                                                     <td style="color: red "th:text="${borrow.getReturnDate()}">22/07/2021</td>
                                                     <td th:text="${borrow.getStudent_name()}">我是学生</td>
-                                                    <td th:text="'#'+${borrow.getStudent_id()}">#1111</td>
+                                                    <td th:text="${borrow.getStudent_id()}">#1111</td>
                                                     <td class="relative">
                                                         <a class="action-btn " th:href="'return-book?id='+${borrow.getId()}">
                                                             <svg class="default-size " viewbox="0 0 341.333 341.333 ">
@@ -279,8 +279,8 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <label class="mb-0 badge badge-primary" title="" data-original-title="Pending" th:if="${book_list_status.get(iterStat.index)}">已被借阅</label>
-                                                        <label class="mb-0 badge badge-success" title="" data-original-title="Pending" th:unless="${book_list_status.get(iterStat.index)}">可借阅</label>
+                                                        <label class="mb-0 badge badge-success" title="" data-original-title="Pending" th:if="${borrow.renewStatus}"><a type="button" th:href="'renew-book?bid='+${borrow.book_id}">续借达到上限</a></label>
+                                                        <label class="mb-0 badge badge-success" title="" data-original-title="Pending" th:unless="${borrow.renewStatus}"><a type="button" th:href="'renew-book?bid='+${borrow.book_id}">续借</a></label>
                                                     </td>
                                                 </tr>
                                             </tbody>

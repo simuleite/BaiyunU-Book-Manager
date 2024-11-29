@@ -13,5 +13,6 @@ public class Borrow {
     String student_name;
     String borrowDate;
     String returnDate;
+    int renewStatus;
 
 }
