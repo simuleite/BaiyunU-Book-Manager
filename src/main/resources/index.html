@@ -257,12 +257,12 @@
                                             </thead>
                                             <tbody>
                                                 <tr th:each="borrow : ${borrow_list}">
-                                                    <td th:text="'#'+${borrow.getBook_id()}">#JH2033</td>
+                                                    <td th:text="${borrow.getBook_id()}">#JH2033</td>
                                                     <td th:text="${borrow.getBook_name()}">我是书名</td>
                                                     <td th:text="${borrow.getBorrowDate()}">22/06/2021</td>
                                                     <td style="color: red "th:text="${borrow.getReturnDate()}">22/07/2021</td>
                                                     <td th:text="${borrow.getStudent_name()}">我是学生</td>
-                                                    <td th:text="'#'+${borrow.getStudent_id()}">#1111</td>
+                                                    <td th:text="${borrow.getStudent_id()}">#1111</td>
                                                     <td class="relative">
                                                         <a class="action-btn " th:href="'return-book?id='+${borrow.getId()}">
                                                             <svg class="default-size " viewbox="0 0 341.333 341.333 ">
