@@ -16,6 +16,7 @@ public interface BookMapper {
             @Result(column = "name", property = "student_name"),
             @Result(column = "borrow_time", property = "borrowDate"),
             @Result(column = "return_time", property = "returnDate"),
+            @Result(column = "renew_status", property = "renewStatus")
     })
     @Select("select * from borrow, student, book where borrow.bid = book.bid and borrow.sid = student.sid")
     List<Borrow> getBorrowList();
