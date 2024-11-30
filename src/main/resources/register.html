@@ -38,8 +38,8 @@
                                 <h2>
                                     <span class="primary">欢迎注册，云雅图书馆</span>
                                 </h2>
-                                <p th:unless="${failure}">请输入用户名和密码进行注册</p>
-                                <p th:if="${failure}" style="color: red">您的两次密码输入不一致或者用户已存在</p>
+                                <p th:unless="${failure}">请输入用户名和密码进行注册<br>（密码长度至少8位）</p>
+                                <p th:if="${failure}" style="color: red">用户已存在或密码不符合要求</p>
                                 <div class="ad-auth-form" >
                                     <div class="ad-auth-feilds mb-30">
                                         <input
