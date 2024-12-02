@@ -37,15 +37,20 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-         String username = req.getParameter("username");
+        String username = req.getParameter("username");
         String password = req.getParameter("password");
         String confirm_password = req.getParameter("confirm_password");
         String encryptedPassword = MD5Util.toMD5(password);
-        if(password.equals(confirm_password) && !userService.AlreadyUsername(username, req.getSession())){
+        if(password.length() > 8){
+            if(password.equals(confirm_password) && !userService.AlreadyUsername(username, req.getSession())){
 
-            userService.InsertUser(username, encryptedPassword, req.getSession());
+                userService.InsertUser(username, encryptedPassword, req.getSession());
 
-            resp.sendRedirect("index");
+                resp.sendRedirect("index");
+            }else {
+                req.getSession().setAttribute("register-failure", new Object());
+                this.doGet(req, resp);
+            }
         }else {
             req.getSession().setAttribute("register-failure", new Object());
             this.doGet(req, resp);
