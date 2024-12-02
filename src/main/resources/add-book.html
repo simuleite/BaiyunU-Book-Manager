@@ -100,7 +100,8 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4>添加书籍</h4>
-                                    <p class="card-desc">请在下方填写书籍详情</p>
+                                    <p th:unless="${failure}" class="card-desc">请在下方填写书籍详情</p>
+                                    <p th:if="${failure}" style="color: red">书籍信息输入不完整</p>
                                 </div>
                                 <div class="card-body">
                                     <form class="separate-form" method="post" action="add-book" enctype="multipart/form-data">
@@ -108,13 +109,13 @@
                                             <div class="row">
                                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
-                                                        <label for="member-name" class="col-form-label">书籍标题</label>
+                                                        <label for="member-name" class="col-form-label">*书籍标题</label>
                                                         <input class="form-control" type="text" placeholder="活着" id="member-name" name="title">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
-                                                        <label for="member-author" class="col-form-label">书籍作者</label>
+                                                        <label for="member-author" class="col-form-label">*书籍作者</label>
                                                         <input class="form-control" type="text" placeholder="余华" id="member-author" name="author">
                                                     </div>
                                                 </div>
@@ -126,13 +127,13 @@
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
-                                                        <label for="company-name" class="col-form-label">价格</label>
+                                                        <label for="company-name" class="col-form-label">*价格</label>
                                                         <input class="form-control" type="text" placeholder="35.50" id="company-name" name="price">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                                     <div class="form-group">
-                                                            <label for="formFile" class="form-label">上传书籍图片</label><br>
+                                                            <label for="formFile" class="form-label">*上传书籍图片</label><br>
                                                             <input class="form-control" style="padding-top: 12px" type="file" id="formFile" name="imagePath">
                                                     </div>
                                                 </div>

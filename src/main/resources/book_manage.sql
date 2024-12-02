@@ -11,7 +11,7 @@
  Target Server Version : 80012
  File Encoding         : 65001
 
- Date: 29/11/2024 09:25:54
+ Date: 02/12/2024 09:08:49
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `admin`  (
   `nickname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of admin
@@ -46,13 +46,15 @@ CREATE TABLE `book`  (
   `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `image_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`bid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of book
 -- ----------------------------
-INSERT INTO `book` VALUES (33, '活着', '2018版', 35.50, NULL, 'static/picture/books/ToLive21609.jpg');
-INSERT INTO `book` VALUES (34, '史记', '中华书局注校', 119.80, NULL, 'static/picture/books/History79237.jpg');
+INSERT INTO `book` VALUES (33, '活着', '2018版', 35.50, NULL, 'static/picture/books/ToLive82563.jpg');
+INSERT INTO `book` VALUES (34, '史记', '中华书局注校', 119.80, NULL, 'static/picture/books/History55386.jpg');
+INSERT INTO `book` VALUES (35, '罪与罚', '汝龙 译', 59.90, NULL, 'static/picture/books/SinAndPanish94467.jpg');
+INSERT INTO `book` VALUES (36, '资治通鉴', '上海古籍出版社', 220.50, NULL, 'static/picture/books/Experiences36198.jpg');
 
 -- ----------------------------
 -- Table structure for borrow
@@ -70,11 +72,12 @@ CREATE TABLE `borrow`  (
   UNIQUE INDEX `f_bid`(`bid` ASC) USING BTREE,
   CONSTRAINT `f_bid` FOREIGN KEY (`bid`) REFERENCES `book` (`bid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `f_sid` FOREIGN KEY (`sid`) REFERENCES `student` (`sid`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of borrow
 -- ----------------------------
+INSERT INTO `borrow` VALUES (6, 21, 34, '2024-11-29', '2024-12-29', 0);
 
 -- ----------------------------
 -- Table structure for student
@@ -86,7 +89,7 @@ CREATE TABLE `student`  (
   `sex` enum('男','女') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `grade` int(11) NOT NULL,
   PRIMARY KEY (`sid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 90 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 91 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student

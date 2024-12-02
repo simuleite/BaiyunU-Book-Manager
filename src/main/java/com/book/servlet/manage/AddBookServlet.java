@@ -36,7 +36,13 @@ public class AddBookServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ThymeleafUtil.process("add-book.html", new Context(), resp.getWriter());
+        Context context = new Context();
+        if (req.getSession().getAttribute("login-failure") != null) {
+            context.setVariable("failure", true);
+            req.getSession().removeAttribute("login-failure");
+        }
+
+        ThymeleafUtil.process("add-book.html", context, resp.getWriter());
     }
 
     @SneakyThrows
@@ -61,6 +67,7 @@ public class AddBookServlet extends HttpServlet {
         for (FileItem fileItem : files) {
             if (!fileItem.isFormField()) {
                 imageName = UniqueCodeUtil.UniqueSuffix(fileItem.getName());
+                if (imageName.isEmpty()) break;
                 Path path = Paths.get(RUNTIME_PATH + imageName);
                 fileItem.write(path);
                 Path currentWorkingDirectory = Paths.get("").toAbsolutePath();
@@ -74,10 +81,16 @@ public class AddBookServlet extends HttpServlet {
                     author = fieldValue;
                 } else if ("desc".equals(fieldName)) {
                     desc = fieldValue;
-                } else if ("price".equals(fieldName)) {
+                } else if ("price".equals(fieldName) && !fieldValue.isEmpty()) {
                     price = Double.parseDouble(fieldValue);
                 }
             }
+        }
+
+        if (title.equals("") || author.equals("") || price == 0.0 || imageName.equals("")) {
+            req.getSession().setAttribute("login-failure", new Object());
+            this.doGet(req, resp);
+            return;
         }
 
         bookService.addBook(title, desc, price, DB_PATH + imageName);
