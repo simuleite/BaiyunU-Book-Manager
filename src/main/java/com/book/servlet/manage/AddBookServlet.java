@@ -82,7 +82,9 @@ public class AddBookServlet extends HttpServlet {
                 } else if ("desc".equals(fieldName)) {
                     desc = fieldValue;
                 } else if ("price".equals(fieldName) && !fieldValue.isEmpty()) {
-                    price = Double.parseDouble(fieldValue);
+                    try {
+                        price = Double.parseDouble(fieldValue);
+                    } catch (NumberFormatException e) {}
                 }
             }
         }

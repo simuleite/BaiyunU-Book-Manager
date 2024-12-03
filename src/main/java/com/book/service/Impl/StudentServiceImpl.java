@@ -16,6 +16,7 @@ public class StudentServiceImpl implements StudentService {
     private StudentServiceImpl() {
     }
 
+    // 防止多线程创造多个实例
     public static synchronized StudentServiceImpl getInstance() {
         if (instance == null) {
             instance = new StudentServiceImpl();

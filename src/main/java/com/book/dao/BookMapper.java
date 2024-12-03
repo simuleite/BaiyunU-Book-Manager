@@ -40,8 +40,9 @@ public interface BookMapper {
     @Insert("insert into book(title, `desc`, price, image_path) values (#{title}, #{desc}, #{price}, #{imagePath})")
     void addBook(@Param("title") String title, @Param("desc") String desc, @Param("price") double price, @Param("imagePath") String imagePath);
 
+    @Result(column = "image_path", property = "imagePath")
     @Select("select * from book where title like concat('%', #{title}, '%')")
-    Book getBookByTitle(String title);
+    List<Book> getBookByTitle(String title);
 
     @Select("select * from borrow where bid = #{bid}")
     Borrow getBorrowByBid(int bid);

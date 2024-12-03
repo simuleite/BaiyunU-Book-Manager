@@ -31,7 +31,6 @@ public class RegisterServlet extends HttpServlet {
             context.setVariable("failure", true);
             req.getSession().removeAttribute("register-failure");
         }
-
         ThymeleafUtil.process("register.html", context, resp.getWriter());
     }
 
@@ -43,9 +42,7 @@ public class RegisterServlet extends HttpServlet {
         String encryptedPassword = MD5Util.toMD5(password);
         if(password.length() > 8){
             if(password.equals(confirm_password) && !userService.AlreadyUsername(username, req.getSession())){
-
                 userService.InsertUser(username, encryptedPassword, req.getSession());
-
                 resp.sendRedirect("index");
             }else {
                 req.getSession().setAttribute("register-failure", new Object());
