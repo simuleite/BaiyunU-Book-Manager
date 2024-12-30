@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
     public User getUserBy(String username, HttpSession session){
         try (SqlSession sqlSession = MybatisUtil.getSession()) {
             UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
             return mapper.getUserByName(username);
         }
     }

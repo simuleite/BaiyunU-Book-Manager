@@ -3,7 +3,6 @@ package com.book.servlet.auth;
 import com.book.service.Impl.UserServiceImpl;
 import com.book.service.UserService;
 import com.book.utils.MD5Util;
-import com.book.utils.MybatisUtil;
 import com.book.utils.ThymeleafUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.ibatis.session.SqlSession;
 import org.thymeleaf.context.Context;
 
 import java.io.IOException;

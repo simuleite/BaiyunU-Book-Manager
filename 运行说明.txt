@@ -1,0 +1,2 @@
+该项目是Web项目，使用Tomcat服务器。
+运行该项目，请解压apache tomcat 11，并将target下的war文件放到tomcat/webapps/book.war中，运行tomcat/bin/startup.bat，即可启动云雅图书馆。

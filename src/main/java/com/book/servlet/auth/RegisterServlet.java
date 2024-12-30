@@ -1,6 +1,5 @@
 package com.book.servlet.auth;
 
-import com.book.entity.User;
 import com.book.service.Impl.UserServiceImpl;
 import com.book.service.UserService;
 import com.book.utils.MD5Util;

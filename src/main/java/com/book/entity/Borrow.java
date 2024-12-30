@@ -2,10 +2,9 @@ package com.book.entity;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class Borrow {
+
     int id;
     int book_id;
     String book_name;
@@ -14,5 +13,4 @@ public class Borrow {
     String borrowDate;
     String returnDate;
     int renewStatus;
-
 }
