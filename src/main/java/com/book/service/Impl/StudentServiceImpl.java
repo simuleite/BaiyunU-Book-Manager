@@ -1,18 +1,18 @@
 package com.book.service.Impl;
 
-import com.book.dao.StudentMapper;
+import com.book.dao.xml.StudentXMLDAO;
 import com.book.entity.Student;
 import com.book.service.StudentService;
-import com.book.utils.MybatisUtil;
-import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
 public class StudentServiceImpl implements StudentService {
 
     private static StudentServiceImpl instance = null;
+    private final StudentXMLDAO studentXMLDAO;
 
     private StudentServiceImpl() {
+        this.studentXMLDAO = new StudentXMLDAO();
     }
 
     // 防止多线程创造多个实例
@@ -25,9 +25,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getStudentList() {
-        try (SqlSession sqlSession = MybatisUtil.getSession()) {
-            StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-            return mapper.getStudentList();
-        }
+        return studentXMLDAO.getStudentList();
     }
 }

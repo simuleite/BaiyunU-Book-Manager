@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLWrapper>
+  <items>
+    <Book>
+      <bid>33</bid>
+      <title>活着</title>
+      <desc>2018版</desc>
+      <price>35.50</price>
+      <author>余华</author>
+      <imagePath>static/picture/books/ToLive82563.jpg</imagePath>
+    </Book>
+    <Book>
+      <bid>34</bid>
+      <title>史记</title>
+      <desc>中华书局注校</desc>
+      <price>119.80</price>
+      <author>司马迁</author>
+      <imagePath>static/picture/books/History55386.jpg</imagePath>
+    </Book>
+    <Book>
+      <bid>35</bid>
+      <title>罪与罚</title>
+      <desc>汝龙 译</desc>
+      <price>59.90</price>
+      <author>陀思妥耶夫斯基</author>
+      <imagePath>static/picture/books/SinAndPanish94467.jpg</imagePath>
+    </Book>
+    <Book>
+      <bid>36</bid>
+      <title>资治通鉴</title>
+      <desc>上海古籍出版社</desc>
+      <price>220.50</price>
+      <author>司马光</author>
+      <imagePath>static/picture/books/Experiences36198.jpg</imagePath>
+    </Book>
+    <Book>
+      <bid>38</bid>
+      <title>三体</title>
+      <desc>刘慈欣 科幻小说</desc>
+      <price>69.90</price>
+      <author>刘慈欣</author>
+      <imagePath>static/picture/books/ThreeBody146694.jpg</imagePath>
+    </Book>
+    <Book>
+      <bid>40</bid>
+      <title>三体典藏版</title>
+      <desc>全三套</desc>
+      <price>99.90</price>
+      <author>刘慈欣</author>
+      <imagePath>static/picture/books/ThreeBody53542.jpg</imagePath>
+    </Book>
+    <Book>
+      <bid>43</bid>
+      <title>三体1</title>
+      <desc>普通版</desc>
+      <price>66.60</price>
+      <author>刘慈欣</author>
+      <imagePath>static/picture/books/ThreeBody115683.jpg</imagePath>
+    </Book>
+  </items>
+</XMLWrapper>
